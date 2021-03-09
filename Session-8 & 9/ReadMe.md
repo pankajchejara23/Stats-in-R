@@ -25,7 +25,7 @@ All these aforementioned examples illustrates some of the cases where we can app
 
 
 
-![Screenshot 2021-03-09 at 12.54.22](/Users/pankaj/Documents/Work/Teaching/Stats_R/Session-8 & 9/intro.png)
+![Screenshot 2021-03-09 at 12.54.22](./intro.png)
 
 
 
@@ -99,7 +99,7 @@ Assumptions
 
   
 
-  ![image-20210309094311714](/Users/pankaj/Documents/Work/Teaching/Stats_R/Session-8 & 9/normal.png)
+  ![image-20210309094311714](./normal.png)
 
 * Same variance in both groups (class A and B): We will compute the variance in both groups. We can use dplyr package for computing variance class wise.
 
@@ -138,7 +138,7 @@ Now, let's talk for each step in detail.
 
 The **first step**  is to formulate the `null` and `alternative` hypothesis. What are those? We specify what we want to test. For example, in our class's test scores  dataset, we want to test that the average test scores from two groups are different. It will become our `alternative` hypothesis. The null hypothesis is a hypothesis of no difference. In other words, the opposite of what we want to test. The below diagram is showing our null and alternative hypothesis.
 
-![hyp](/Users/pankaj/Documents/Work/Teaching/Stats_R/Session-8 & 9/hyp.png)
+![hyp](./hyp.png)
 
 The **second step** to decide the level of significance ($\alpha$). You can choose one of following .1%, 1%, 5%. For our example, let's select \alpha as 5% or .05.
 
@@ -156,7 +156,7 @@ t.test(data$TestScore ~ data$Class, var.equal = FALSE)
 
 We use `t.test()` function from R. We have specified the testscore and class variable. Here, testscore is dependent variable and class is independent variable. We have also specified that variance of groups are not equal. It automatically select `Welsh t-test` when we tell that the variance among groups is not same.
 
-![Screenshot 2021-03-09 at 12.27.02](/Users/pankaj/Documents/Work/Teaching/Stats_R/Session-8 & 9/t-test.png)
+![Screenshot 2021-03-09 at 12.27.02](./t-test.png)
 
 In the results, we can see `p-value`. We will compare it with $\alpha$. We can see that p-value is less than .05 (or our selected level of significance). Hence, we say that **null hypothesis is rejected** and alternative hypothesis can be accepted. From the results, we can also see that group-A mean is higher than group-B. We can say that the average tests cores from class A is **significanlty** higher than average test scores from class B.
 
@@ -187,7 +187,7 @@ t.test(women$height,mu=65)
 
 
 
-![Screenshot 2021-03-09 at 14.03.46](/Users/pankaj/Documents/Work/Teaching/Stats_R/Session-8 & 9/one-sample.png)
+![Screenshot 2021-03-09 at 14.03.46](./one-sample.png)
 
 From our results from t-test, we can see that p-value is not less than .05 that means we can not reject our null hypothesis.
 
@@ -244,7 +244,7 @@ We will perform the test now using the same function but this time we specify `p
 
 
 
-![Screenshot 2021-03-09 at 14.25.27](/Users/pankaj/Documents/Work/Teaching/Stats_R/Session-8 & 9/paired_snapshot.png)
+![Screenshot 2021-03-09 at 14.25.27](./paired_snapshot.png)
 
 In the results, if we look at the `p-value` and that is **.00000894**. This value is smaller than $\alpha$ that means we can reject the null hypothesis. We accept the alternative hypothesis.
 
@@ -285,7 +285,7 @@ Following are assumptions for the ANOVA test
 
 We use `aov()` function in R to perform ANOVA test.
 
-![Screenshot 2021-03-09 at 15.00.15](/Users/pankaj/Documents/Work/Teaching/Stats_R/Session-8 & 9/anova_snap.png)
+![Screenshot 2021-03-09 at 15.00.15](./anova_snap.png)
 
 
 
