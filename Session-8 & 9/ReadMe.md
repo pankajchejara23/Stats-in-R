@@ -10,12 +10,12 @@ In this session, we will cover following
 
 ### Why we do statistical test?
 
-As we have already discussed that we often do not have access to entire population. Instead we have access to a small portion of population known as sample. We use this sample to infer knowledge about the population. 
+As we have already discussed that we often do not have access to entire population. Instead we have access to a small portion of population known as sample. We use this sample to infer knowledge about the population.
 
 Following are  few example to explain it further.
 
 * We collected  a sample of height data from  students studying in university X. We computed the average of our sample and obtained the average height of students in our sample. Now we want to test whether the average height found in our sample is the same for the population.
-* We collected a two samples from  two universities' students' salary. We want to see is there any difference between average salary between two universities or not. 
+* We collected  two samples from  two universities' students' salary. We want to see is there any difference between average salary between two universities or not. 
 * We collected two samples of test scores of  same classroom at the start of semester and end of semester.  We wanted to test whether the students test scores' were improved significanlty or not.
 * We collected a salary sample of people working in Tallinn with their education levels (e.g., primary, secondary, bachelors, master, doctorate). We want to test is there any significant difference in salary among these various levels of education levels.
 
@@ -39,7 +39,7 @@ We will cover one sample t-test, independent sample t-test, paired t-test and AN
 
 #### Independent sample t-test
 
-We do this test when we have two independent samples and we want to campare a statistic for these two groups. For example, we want to compare the average salary of students working part-time from two different universities. In this case, we have two samples collected from different universities. These samples are independent because they contains data of different people. 
+We do this test when we have two independent samples and we want to campare a statistic for these two groups. For example, we want to compare the average salary of students working part-time from two different universities. In this case, we have two samples collected from different universities. These samples are independent because they contains data of different people.
 
 Make sure the following assumption in your dataset when you do t-test
 
@@ -49,7 +49,7 @@ Make sure the following assumption in your dataset when you do t-test
 * Dependent variable has a normal distribution.
 * Each group has same variance.
 
-We will look at above assumptions with the help of an example. Let's say we have test scores from two classes: A and B. Now we want to test whether the difference between these two classes' test score is significant or not. 
+We will look at above assumptions with the help of an example. Let's say we have test scores from two classes: A and B. Now we want to test whether the difference between these two classes' test score is significant or not.
 
 | Class | TestScore |
 | ----- | --------- |
@@ -84,20 +84,20 @@ Assumptions
 
 * The independence assumption can only be ensure while data collection. We assume here that the data were collected independently.
 
-* Normal distribution: We can plot the test scores for each class and check for `bell shape`. 
+* Normal distribution: We can plot the test scores for each class and check for `bell shape`.
 
   ```R
   library(lattice)
   library(rio)
-  
+
   # load dataset
   data <- import('data-file-name')
-  
+
   # plot the distribution
   densityplot(~ data$TestScore|data$Class)
   ```
 
-  
+
 
   ![image-20210309094311714](./normal.png)
 
@@ -114,27 +114,27 @@ Assumptions
   | A     | 55.8     |
   | B     | 169      |
 
-  As we can see the variance is not same and the difference is not small. 
+  As we can see the variance is not same and the difference is not small.
 
   * If the variance is same, we will use [**Student's T-test**](https://en.wikipedia.org/wiki/Student%27s_t-test).
   * If the variance is not same then we will use [**Welsh T-test**](https://en.wikipedia.org/wiki/Welch%27s_t-test).
 
   In our dataset, the variance is not same therefore we will apply **Welsh t-test**.
 
-  
+
 
 ##### Performing the test
 
 We will first setup our hypothesis. We want to test that is there any difference between test scores' of class `A` and `B`. We will follow the below steps
 
 1. State Null and alternative hypothesis
-2. Decide significance level $\alpha$ 
+2. Decide significance level $\alpha$
 3. Perform test
 4. Check the `p-value` and decide 'whether to reject null hypothesis or not'
 
 
 
-Now, let's talk for each step in detail. 
+Now, let's talk for each step in detail.
 
 The **first step**  is to formulate the `null` and `alternative` hypothesis. What are those? We specify what we want to test. For example, in our class's test scores  dataset, we want to test that the average test scores from two groups are different. It will become our `alternative` hypothesis. The null hypothesis is a hypothesis of no difference. In other words, the opposite of what we want to test. The below diagram is showing our null and alternative hypothesis.
 
@@ -144,9 +144,10 @@ The **second step** to decide the level of significance ($\alpha$). You can choo
 
 The **third step** is to perform the test and obtain the **p-value**.
 
- p-value =< $\alpha$ : H_1 hypothesis
-
-p-value > $\alpha$ : H_0 hypothesis
+>  p-value =< $\alpha$ : $H_1$ hypothesis
+>
+> p-value > $\alpha$ : $H_0$ hypothesis
+>
 
 We will perform the t-test on out dataset in R.
 
@@ -193,7 +194,7 @@ From our results from t-test, we can see that p-value is not less than .05 that 
 
 #### Paired t-test
 
-Let's think about the third example which we have discussed in the start. 
+Let's think about the third example which we have discussed in the start.
 
 > We collected two samples of test scores of  same classroom at the start of semester and end of semester.  We wanted to test whether the students test scores' were improved significanlty or not.
 
@@ -256,7 +257,7 @@ ANOVA or **AN**alysis **O**f **VA**riance test has its usage in different scenar
 
 Let's take an example. We have a diet datasets (you can download it from [here](https://www.sheffield.ac.uk/polopoly_fs/1.570199!/file/stcp-Rdataset-Diet.csv)). This dataset has attributes person id, gender, height, diet, weight before taking diet, weight after taking the diet. There were three different  diets were given. We want to test whether the diet has any impact over weight loss or not.
 
-So first we compute the weight loss for each participants. 
+So first we compute the weight loss for each participants.
 
 ```R
 > data <- import('anova_test_dataset_diet.csv')
@@ -316,6 +317,3 @@ You might be already wondering why we have so many test and how would I know whe
 > You have two variables (both continuous) containing data collected from same participants.
 >
 > **Paired t-test**
-
-
-
